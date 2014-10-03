@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<meta charset="UTF-8">
+	<title>Ebola 2014</title>
+	
+	<link rel="stylesheet" href="style/style.css" />
+</head>
+
+	<body id="main-body" onresize="event_resize()">
+	
+		<div id="inner-body">
+		
+			<h1 id="header">Ebola 2014 Outbreak Data</h1>
+
+			<div id="location-selector-section">
+				<h2>Select a Location: 
+					<select id="location" onchange="event_location_selected()">
+					</select>
+				</h2>
+			</div>
+			
+			
+			<div id="variable-selector-section">
+				<h2>Select a Data Set:
+					<select id="variable" onchange="event_variable_selected()">
+					</select>
+				</h2>
+			</div>		
+			
+			<div id="graph-section">
+				<p id="message-1">
+					Please select both a location and a data-set, <br>then a graph will be displayed.	
+				</p>
+				
+			</div>
+
+			<div id="thanks-section">
+				Data Sources and Credits
+			</div>
+		
+		</div>
+
+		<script src="src/data/Liberia.js" type="text/javascript"></script>
+		<script src="src/data/Points.js" type="text/javascript"></script>
+	
+		<script src="src/charts/Chart.js" type="text/javascript"></script>
+
+		<script src="http://code.jquery.com/jquery-latest.min.js" type="text/javascript"></script>
+		
+		<link rel="stylesheet" href="http://ajax.googleapis.com/ajax/libs/jqueryui/1.10.4/themes/smoothness/jquery-ui.css" />
+		<script src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.10.4/jquery-ui.min.js"></script>
+
+		<script src="src/Main.js" type="text/javascript"></script>
+		<script type="text/javascript">main()</script>
+
+	</body>
+</html>

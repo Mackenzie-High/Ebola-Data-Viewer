@@ -1,0 +1,123 @@
+@CHARSET "UTF-8";
+
+body
+{
+	/**
+	 * Cite: http://www.backgroundlabs.com/
+	 */
+	background-image: url("leaves1.png");
+}
+
+#inner-body
+{
+	background: linear-gradient(#FFFFFF, #FF9900);
+
+	/* background: #FFFFFF; */
+	
+	width: 90%;
+	
+	padding: 25px;
+	
+	margin-top: 50px;
+	margin-left: 50px;
+	margin-right: 50px;
+	
+	border: 2px solid;
+    border-radius: 10px;
+    
+    margin: 0 auto;
+}
+
+#header
+{
+	text-align: center;
+}
+
+#location-selector-section
+{
+    margin: 25px auto;
+	
+    border: 2px solid;
+    border-radius: 10px;
+    
+    padding: 25px;
+    
+    width: 90%;
+    
+    max-width: 90%; 
+}
+
+#location
+{
+	width: 400px;
+	
+    border-radius: 3px;
+    
+    text-align: center;
+    
+    font-size: 80%;
+}
+
+#variable-selector-section
+{
+    margin: 25px auto;
+	
+    border: 2px solid;
+    border-radius: 10px;
+    
+    padding: 25px;
+    
+    width: 90%;
+    
+    max-width: 90%; 
+}
+
+#variable
+{
+	width: 400px;
+	
+    border-radius: 3px;
+    
+    text-align: center;
+    
+    font-size: 80%;
+}
+
+#graph-section
+{
+	background: #FFFFFF;
+	
+    margin: 25px auto;
+	
+    border: 2px solid;
+    border-radius: 10px;
+    
+    padding: 25px;
+    
+    width: 90%; 
+    max-width: 90%; 
+    
+    overflow: auto;
+}
+
+
+
+#message-1
+{
+	font-size: 150%;
+}
+
+#thanks-section
+{
+    margin: 25px auto;
+	
+    border: 2px solid;
+    border-radius: 10px;
+    
+    padding: 25px;
+    
+    width: 90%;
+    
+    max-width: 90%; 
+}
+
