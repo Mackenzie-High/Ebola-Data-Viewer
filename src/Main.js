@@ -36,7 +36,8 @@ var LIBERIA_VARIABLES = [
  */
 function main()
 {
-
+    
+	
 	/**
 	 * Add the countries that we have data for. 
 	 */
@@ -46,21 +47,14 @@ function main()
 
 		$("#location").append("<option>" + place + "</option>");	
 	}
-
-	// TODO
-	event_location_selected();
-	event_variable_selected();
-}
-
-/**
- * This event is fired when the user selects a country, etc. 
- */
-function event_location_selected()
-{
-	/**
+	
+    /**
 	 * Add the names of the data-sets that are available for the country.  
 	 */
 	add_variables(LIBERIA_VARIABLES);
+	
+	// TODO
+	update();
 }
 
 function add_variables(variables)
@@ -74,7 +68,7 @@ function add_variables(variables)
 /**
  * This event is fired when the user selects a data-set to display. 
  */
-function event_variable_selected()
+function update()
 {
 	$("#message-1").remove();
 	$("#graph-canvas").remove();
@@ -146,9 +140,4 @@ function event_variable_selected()
 	chart.Line(data, options);
 	chart.height = height;
 	chart.width = width;
-}
-
-function event_resize()
-{
-	event_variable_selected();
 }

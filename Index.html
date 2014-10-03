@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html>
 
@@ -8,7 +9,7 @@
 	<link rel="stylesheet" href="style/style.css" />
 </head>
 
-	<body id="main-body" onresize="event_resize()">
+	<body id="main-body" onresize="update()">
 	
 		<div id="inner-body">
 		
@@ -16,7 +17,7 @@
 
 			<div id="location-selector-section">
 				<h2>Select a Location: 
-					<select id="location" onchange="event_location_selected()">
+					<select id="location" onchange="update()">
 					</select>
 				</h2>
 			</div>
@@ -24,7 +25,7 @@
 			
 			<div id="variable-selector-section">
 				<h2>Select a Data Set:
-					<select id="variable" onchange="event_variable_selected()">
+					<select id="variable" onchange="update()">
 					</select>
 				</h2>
 			</div>		
@@ -37,7 +38,12 @@
 			</div>
 
 			<div id="thanks-section">
-				Data Sources and Credits
+				<ul>
+					<li>Although the data herein is believed to be accurate, no guarantee is made thereto.</li>
+					<li>The data displayed here was obtained from (<a href="https://github.com/cmrivers/ebola">Source</a>).</li>
+					<li>This website uses <a href="http://www.chartjs.org/">ChartJS</a> in order to create graphs.</li>
+					<li>This website was created by Mackenzie High.</li> 
+				</ul>
 			</div>
 		
 		</div>
