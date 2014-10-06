@@ -1,0 +1,75 @@
+
+<!DOCTYPE html>
+<html>
+
+<head>
+	<meta charset="UTF-8">
+	<title>Ebola 2014</title>
+	
+	<link rel="stylesheet" href="style/style.css" />
+</head>
+
+	<body id="main-body" onresize="update()">
+	
+		<div id="inner-body">
+		
+			<h1 id="header">Ebola Outbreak Data (2014-Present) </h1>
+
+			<div id="location-selector-section">
+				<h2>Select a Location: 
+					<select id="location" onchange="event_location_changed()">
+					</select>
+				</h2>
+
+			</div>
+			
+			
+			<div id="variable-selector-section">
+				<h2>Select a Data Set:
+					<select id="variable" onchange="update()">
+					</select>
+				</h2>
+			</div>		
+			
+			<div id="graph-section">
+				<p id="message-1">
+					Please select both a location and a data-set, <br>then a graph will be displayed.	
+				</p>
+			</div>
+
+			<div id="table-section" class="orange-table">
+				<table id="points-table">
+				</table>
+			</div>
+
+			<div id="thanks-section">
+				<ul>
+					<li>Although the data herein is believed to be accurate, no guarantee is made thereto.</li>
+					<li>Please <a href="https://github.com/Mackenzie-High/Ebola-Data-Viewer/issues">file a report</a>, if you find a bug, etc</li>
+					<li><a href="https://github.com/cmrivers/ebola">Volunteers</a> are needed in order to digitize the data for Guinea.</li>
+					<li>The data displayed here was obtained from (<a href="https://github.com/cmrivers/ebola">Source</a>).</li>
+					<li>This website uses <a href="http://www.chartjs.org/">ChartJS</a> in order to create graphs.</li>
+					<li>Thanks to <a href="http://www.backgroundlabs.com/item/autumn-leaves-background/">Background Labs</a> for the background image.</li>
+					<li>Thanks to <a href="http://www.csstablegenerator.com/">CSS Table Generator</a> for the table CSS style.</li>
+					<li>This website was created by Mackenzie High.</li> 
+				</ul>
+			</div>
+		
+		</div>
+
+		<script src="src/data/Liberia.js" type="text/javascript"></script>
+		<script src="src/data/Sierra Leone.js" type="text/javascript"></script>
+		<script src="src/data/Points.js" type="text/javascript"></script>
+	
+		<script src="src/charts/Chart.js" type="text/javascript"></script>
+
+		<script src="http://code.jquery.com/jquery-latest.min.js" type="text/javascript"></script>
+		
+		<link rel="stylesheet" href="http://ajax.googleapis.com/ajax/libs/jqueryui/1.10.4/themes/smoothness/jquery-ui.css" />
+		<script src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.10.4/jquery-ui.min.js"></script>
+
+		<script src="src/Main.js" type="text/javascript"></script>
+		<script type="text/javascript">main()</script>
+
+	</body>
+</html>

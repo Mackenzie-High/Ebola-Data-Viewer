@@ -1,22 +1,113 @@
 
 /**
+ * These are the variables available in the Liberia data.  
+ */
+var LIBERIA_VARIABLES = [
+"Case Fatality Rate (CFR) - Confirmed & Probable Cases",
+"Contacts lost to follow-up",
+"Contacts seen",
+"Contacts who completed 21 day follow-up",
+"Cumulative admission/isolation",
+"Cumulative cases among HCW",
+"Cumulative deaths among HCW",
+"Currently under follow-up",
+"New Case/s (Probable)",
+"New Case/s (Suspected)",
+"New admissions",
+"New case/s (confirmed)",
+"Newly Reported Cases in HCW",
+"Newly Reported deaths in HCW",
+"Newly reported contacts",
+"Newly reported deaths",
+"Specimens collected",
+"Specimens pending for testing",
+"Total Number of Confirmed Cases of Guinean Nationality",
+"Total Number of Confirmed Cases of Sierra Leonean Nationality",
+"Total confirmed cases",
+"Total contacts listed",
+"Total death/s in confirmed cases",
+"Total death/s in confirmed & probable & suspected cases",
+"Total death/s in probable cases",
+"Total death/s in suspected cases",
+"Total discharges",
+"Total no. currently in Treatment Units",
+"Total probable cases",
+"Total specimens tested",
+"Total suspected cases"];
+
+/**
+ * These are the variables available in the Liberia data.  
+ */
+var SIERRA_LEONE_VARIABLES = [
+"cfr",
+"contacts_followed",
+"contacts_healthy",
+"contacts_ill",
+"contacts_not_seen",
+"cum_completed_contacts",
+"cum_confirmed",
+"cum_contacts",
+"cum_noncase",
+"cum_probable",
+"cum_suspected",
+"death_confirmed",
+"death_probable",
+"death_suspected",
+"etc_cum_admission",
+"etc_cum_deaths",
+"etc_cum_discharges",
+"etc_currently_admitted",
+"etc_new_admission",
+"etc_new_deaths",
+"etc_new_discharges",
+"new_completed_contacts",
+"new_confirmed",
+"new_contacts",
+"new_noncase",
+"new_probable",
+"new_suspected",
+"percent_seen",
+"population",
+];
+
+/**
  * These are the locations that we have data for. 
  * 
- * [location, [location-key, data-provider-function]]
+ * [location, [location-key, data-provider-function, location-variables]]
  * 
  */
-var PLACES = [["Liberia (National)",           ["national",           liberia]],
-	          ["Liberia (Bomi County)",        ["bomi county",        liberia]],
-	          ["Liberia (Bong County)",        ["bong county",        liberia]],
-	          ["Liberia (Gbarpolu County)",    ["gbarpolu county",    liberia]],
-	          ["Liberia (Grand Bassa)",        ["grand bassa",        liberia]],
-	          ["Liberia (Grand Cape Mount)",   ["grand cape mount",   liberia]],
-	          ["Liberia (Grand Gedeh)",        ["grand gedeh",        liberia]],
-	          ["Liberia (Lofa County)",        ["lofa county",        liberia]],
-	          ["Liberia (Margibi County)",     ["margibi county",     liberia]],
-	          ["Liberia (Maryland County)",    ["maryland county",    liberia]],
-	          ["Liberia (Montserrado County)", ["montserrado county", liberia]],
-	          ["Liberia (Nimba County)",       ["nimba county",       liberia]]];
+var PLACES = [["Liberia (National)",           ["national",           liberia, LIBERIA_VARIABLES]],
+	          ["Liberia (Bomi County)",        ["bomi county",        liberia, LIBERIA_VARIABLES]],
+	          ["Liberia (Bong County)",        ["bong county",        liberia, LIBERIA_VARIABLES]],
+	          ["Liberia (Gbarpolu County)",    ["gbarpolu county",    liberia, LIBERIA_VARIABLES]],
+	          ["Liberia (Grand Bassa)",        ["grand bassa",        liberia, LIBERIA_VARIABLES]],
+	          ["Liberia (Grand Cape Mount)",   ["grand cape mount",   liberia, LIBERIA_VARIABLES]],
+	          ["Liberia (Grand Gedeh)",        ["grand gedeh",        liberia, LIBERIA_VARIABLES]],
+	          ["Liberia (Grand Kru)",          ["grand kru",          liberia, LIBERIA_VARIABLES]],
+	          ["Liberia (Lofa County)",        ["lofa county",        liberia, LIBERIA_VARIABLES]],
+	          ["Liberia (Margibi County)",     ["margibi county",     liberia, LIBERIA_VARIABLES]],
+	          ["Liberia (Maryland County)",    ["maryland county",    liberia, LIBERIA_VARIABLES]],
+	          ["Liberia (Montserrado County)", ["montserrado county", liberia, LIBERIA_VARIABLES]],
+	          ["Liberia (Nimba County)",       ["nimba county",       liberia, LIBERIA_VARIABLES]],
+	          ["Liberia (Rivercess County)",   ["rivercess county",  liberia, LIBERIA_VARIABLES]],
+	          ["Liberia (River Gee County)",   ["river gee county",   liberia, LIBERIA_VARIABLES]],
+	          ["Liberia (Sinoe County)",       ["sinoe county",       liberia, LIBERIA_VARIABLES]],
+
+              ["Sierra Leone (National)",           ["national",           sierra_leone, SIERRA_LEONE_VARIABLES]],
+              ["Sierra Leone (Bo)",                 ["bo",                 sierra_leone, SIERRA_LEONE_VARIABLES]],
+              ["Sierra Leone (Bombali)",            ["bombali",            sierra_leone, SIERRA_LEONE_VARIABLES]],
+              ["Sierra Leone (Bonthe)",             ["bonthe",             sierra_leone, SIERRA_LEONE_VARIABLES]],
+              ["Sierra Leone (Kambia)",             ["kambia",             sierra_leone, SIERRA_LEONE_VARIABLES]],
+              ["Sierra Leone (Kenema)",             ["kenema",             sierra_leone, SIERRA_LEONE_VARIABLES]],
+              ["Sierra Leone (Koinadugu)",          ["koinadugu",          sierra_leone, SIERRA_LEONE_VARIABLES]],
+              ["Sierra Leone (Kono)",               ["kono",               sierra_leone, SIERRA_LEONE_VARIABLES]],
+              ["Sierra Leone (Moyamba)",            ["moyamba",            sierra_leone, SIERRA_LEONE_VARIABLES]],
+              ["Sierra Leone (Port Loko)",          ["port loko",          sierra_leone, SIERRA_LEONE_VARIABLES]],
+              ["Sierra Leone (Pujehun)",            ["pujehun",            sierra_leone, SIERRA_LEONE_VARIABLES]],
+              ["Sierra Leone (Tonkolili)",          ["tonkolili",          sierra_leone, SIERRA_LEONE_VARIABLES]],
+              ["Sierra Leone (Western Area Rural)", ["western area rural", sierra_leone, SIERRA_LEONE_VARIABLES]],
+              ["Sierra Leone (Western Area Urban)", ["western area urban", sierra_leone, SIERRA_LEONE_VARIABLES]],
+];
 
 /**
  * This function constructs an object to pass to the graphing library.
@@ -68,6 +159,26 @@ function graph_data(place, variable)
 }
 
 /**
+ * This method retrieves the list of information associated with a particular place. 
+ * 
+ * @param place is the place whose information is being retrieved. 
+ * @returns the list of information. Example: [place-key, data-provider-function, variables] 
+ */
+function place_info(place)
+{
+	// For each place in PLACES:
+	for(var i = 0; i < PLACES.length; i++)
+	{
+		if(PLACES[i][0] == place)
+		{
+			return PLACES[i][1];
+		}
+	}
+	
+	return null;
+}
+
+/**
  * This method retrieves a list of data-points for a particular location and data-variable. 
  * 
  * Example Returned List:  [["7/1/2014", 3], ["8/3/2014", 5], ["9/5/2014", 7]]
@@ -78,23 +189,17 @@ function graph_data(place, variable)
  */
 function get_points(place, variable)
 {
-	// For each place in PLACES:
-	for(var i = 0; i < PLACES.length; i++)
-	{
-		if(PLACES[i][0] == place)
-		{
-			// Get the JSON data. 
-			var data = PLACES[i][1][1]();
+	// Get the list that contains the data-provider function object and the location as it appears in the data. 
+	var info = place_info(place); 
+
+	// Get the JSON data. 
+	var data = info[1]();
 			
-			// Get the name of the location, as it appears in the data. 
-			var location = PLACES[i][1][0];
+	// Get the name of the location, as it appears in the data. 
+	var location = info[0];
 			
-			// Create and return the data-points. 
-			return points_of(data, location, variable);		
-		}
-	}
-	
-	return null;
+	// Create and return the data-points. 
+	return points_of(data, location, variable);
 }
 
 /**
@@ -145,7 +250,7 @@ function points_of(data, place, variable)
 		 * If the line provides information regarding the desired data-variable,
 		 * then we need to create a point for it.  
 		 */
-		if(get_value(line, "variable") == variable)
+		if(get_value(line, "variable").toLowerCase() == variable.toLowerCase())
 		{
 			// A point is a list: [date, c]
 			var date = get_value(line, "date");

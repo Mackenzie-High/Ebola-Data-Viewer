@@ -1,35 +1,3 @@
-var LIBERIA_VARIABLES = [
-"Case Fatality Rate (CFR) - Confirmed & Probable Cases",
-"Contacts lost to follow-up",
-"Contacts seen",
-"Contacts who completed 21 day follow-up",
-"Cumulative admission/isolation",
-"Cumulative cases among HCW",
-"Cumulative deaths among HCW",
-"Currently under follow-up",
-"New Case/s (Probable)",
-"New Case/s (Suspected)",
-"New admissions",
-"New case/s (confirmed)",
-"Newly Reported Cases in HCW",
-"Newly Reported deaths in HCW",
-"Newly reported contacts",
-"Newly reported deaths",
-"Specimens collected",
-"Specimens pending for testing",
-"Total Number of Confirmed Cases of Guinean Nationality",
-"Total Number of Confirmed Cases of Sierra Leonean Nationality",
-"Total confirmed cases",
-"Total contacts listed",
-"Total death/s in confirmed cases",
-"Total death/s in confirmed, probable, suspected cases",
-"Total death/s in probable cases",
-"Total death/s in suspected cases",
-"Total discharges",
-"Total no. currently in Treatment Units",
-"Total probable cases",
-"Total specimens tested",
-"Total suspected cases"];
 
 /**
  * 
@@ -48,18 +16,21 @@ function main()
 		$("#location").append("<option>" + place + "</option>");	
 	}
 	
-    /**
-	 * Add the names of the data-sets that are available for the country.  
-	 */
-	add_variables(LIBERIA_VARIABLES);
+	add_variables();
 	
-	// TODO
 	update();
 }
 
-function add_variables(variables)
+/**
+ * Add the names of the data-sets that are available for the country.  
+ */
+function add_variables()
 {
-	for(var i = 0; i < LIBERIA_VARIABLES.length; i++)
+	var place = $("#location option:selected").text();
+	
+	var variables = place_info(place)[2];
+	
+	for(var i = 0; i < variables.length; i++)
 	{
 		$("#variable").append("<option>" + variables[i] + "</option>");
 	}
@@ -140,4 +111,31 @@ function update()
 	chart.Line(data, options);
 	chart.height = height;
 	chart.width = width;
+	
+	////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+	
+	var labels = data["labels"];
+	var points = data["datasets"][0]["data"];
+	
+	$("#points-table").empty();
+	
+	$("#points-table").append("<tr> <td> <b>Date</b> </td>  <td> <b>Value</b> </td> </tr>");
+	
+	for(var i = labels.length - 1; i >= 0; i--)
+	{
+		var date = labels[i];
+		var value = points[i];
+		
+		$("#points-table").append("<tr> <td>" + date + "</td> <td>" + value + "</td> </tr>");
+	}
+	
+}
+
+function event_location_changed()
+{
+	$("#variable").empty();
+	
+	add_variables();
+	
+	update();
 }
